@@ -17,7 +17,9 @@ function MyPlugin( options )
 	this.SetOnMyReply = function( cb ) { this.plg.Send( "SetOnMyReply", cb.name ); }
 	this.SaveMyImage = function( img ) { return this.plg.SendImg( "SaveMyImage", img ); }
 	this.ModifyMyImage = function( img,txt ) { return this.plg.SendObj( "ModifyMyImage", img,txt ); }
-	this.CreateMyButton = function( txt,width,height ) { 
+	
+	this.CreateMyButton = function( txt,width,height ) 
+	{ 
 		var ret = this.plg.CreateObj( "MyButton", txt, width*dw, height*dh );  
 		if( ret ) return new Obj(ret); else return null; 
 	}
