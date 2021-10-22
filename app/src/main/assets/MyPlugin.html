@@ -1,0 +1,195 @@
+
+<!DOCTYPE html> 
+<html>
+
+<head>
+	<title>MyPlugin</title> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <style type="text/css">
+        </style>
+</head> 
+
+<body> 
+
+<div data-role="page" data-theme="a">
+
+	<div data-role="header" data-position="fixed">
+		<a href='#' class='ui-btn-left' data-icon='arrow-l' data-theme="c" onclick="history.back(); return false">Back</a> 
+		<h1>MyPlugin</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+			
+		<p> Todo: Documentation for MyPlugin</p>
+		
+		<p>To use MyPlugin, you must first load the plugin at the top of your script
+		using the <b>LoadPlugin</b> method like this:</p>
+		
+		<div class="samp">&nbsp;app.LoadPlugin( "MyPlugin" );</div>
+		
+		<p>Then you can create an instance of the plugin object when you need it like this:</p>
+		
+		<div class="samp">&nbsp;plg = app.CreateMyPlugin()</div>
+		  
+		<br>
+		<p>Examples:</p>
+		
+		<div data-role="collapsible" data-collapsed="true"  data-mini="true" data-theme="a" data-content-theme="b">
+			<h3>Example - Get Version</h3>
+			<div id="examp1" style="font-size:70%">
+				app.LoadPlugin( "MyPlugin" );<br>
+				<br>
+				function OnStart()<br>
+				{<br>
+				 &nbsp;&nbsp;lay = app.CreateLayout( "Linear", "VCenter,FillXY" );<br><br>
+				 &nbsp;&nbsp;btn = app.CreateButton( "Press Me" );<br>				
+				 &nbsp;&nbsp;btn.SetOnTouch( CallPlugin );<br>
+				 &nbsp;&nbsp;lay.AddChild( btn );<br><br>
+				 <b id="snip1"  style="font-size:100%">
+				 &nbsp;&nbsp;plg = app.CreateMyPlugin();<br>
+				 </b><br>
+				 &nbsp;&nbsp;app.AddLayout( lay );<br>
+				}<br>
+				<br>
+				function CallPlugin()<br>
+				{<br>
+				&nbsp;&nbsp;alert( plg.GetVersion() );<br>
+				}<br><br>
+				
+			</div>
+			<div name="divCopy" align="right">
+			<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="copy(snip1)">&nbsp;&nbsp;Copy&nbsp;&nbsp;</a>
+			<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="copy(examp1)">Copy All</a>
+			<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="demo(examp1)">&nbsp;&nbsp;&nbsp;Run&nbsp;&nbsp;&nbsp;</a>
+			</div>
+		</div>
+		
+		
+		<div data-role="collapsible" data-collapsed="true"  data-mini="true" data-theme="a" data-content-theme="b">
+			<h3>Example - Test Callback</h3>
+			<div id="examp2" style="font-size:70%">
+				app.LoadPlugin( "MyPlugin" );<br>
+				<br>
+				function OnStart()<br>
+				{<br>
+				 &nbsp;&nbsp;lay = app.CreateLayout( "Linear", "VCenter,FillXY" );<br><br>
+				 &nbsp;&nbsp;btn = app.CreateButton( "Press Me" );<br>				
+				 &nbsp;&nbsp;btn.SetOnTouch( CallPlugin );<br>
+				 &nbsp;&nbsp;lay.AddChild( btn );<br><br>
+				 <b id="snip2"  style="font-size:100%">
+				 &nbsp;&nbsp;plg = app.CreateMyPlugin();<br>
+				 &nbsp;&nbsp;plg.SetOnMyReply( OnMyReply );<br>
+				 </b><br>
+				 &nbsp;&nbsp;app.AddLayout( lay );<br>
+				}<br>
+				<br>
+				function CallPlugin()<br>
+				{<br>
+				&nbsp;&nbsp;plg.MyFunc( "hello", 21, true );<br>
+				}<br><br>
+				function OnMyReply( txt, num, bool )<br>
+				{<br>
+				&nbsp;&nbsp;alert( "txt=" + txt + " num=" + num + " bool=" + bool );<br>
+				}<br>
+			</div>
+			<div name="divCopy" align="right">
+			<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="copy(snip2)">&nbsp;&nbsp;Copy&nbsp;&nbsp;</a>
+			<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="copy(examp2)">Copy All</a>
+			<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="demo(examp2)">&nbsp;&nbsp;&nbsp;Run&nbsp;&nbsp;&nbsp;</a>
+			</div>
+		</div>
+		
+		<div data-role="collapsible" data-collapsed="true"  data-mini="true" data-theme="a" data-content-theme="b">
+				<h3>Example - Send Image Data</h3>
+				<div id="examp3" style="font-size:70%">
+					app.LoadPlugin( "MyPlugin" );<br>
+					<br>
+					function OnStart()<br>
+					{<br>
+					 &nbsp;&nbsp;lay = app.CreateLayout( "Linear", "VCenter,FillXY" );<br><br>
+					 &nbsp;&nbsp;img = app.CreateImage( "/Sys/Img/Hello.png", 0.2, -1 );<br>
+					 &nbsp;&nbsp;lay.AddChild( img ); <br><br>
+					 &nbsp;&nbsp;btn = app.CreateButton( "Save Image" );<br>				
+					 &nbsp;&nbsp;btn.SetOnTouch( CallPlugin );<br>
+					 &nbsp;&nbsp;lay.AddChild( btn );<br><br>
+					 <b id="snip3"  style="font-size:100%">
+					 &nbsp;&nbsp;plg = app.CreateMyPlugin();<br>
+					 </b><br>
+					 &nbsp;&nbsp;app.AddLayout( lay );<br>
+					}<br>
+					<br>
+					function CallPlugin()<br>
+					{<br>
+					&nbsp;&nbsp;var ret = plg.SaveMyImage( img );<br>
+					&nbsp;&nbsp;app.ShowPopup( ret );<br>
+					}<br>
+				</div>
+				<div name="divCopy" align="right">
+				<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="copy(snip3)">&nbsp;&nbsp;Copy&nbsp;&nbsp;</a>
+				<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="copy(examp3)">Copy All</a>
+				<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="demo(examp3)">&nbsp;&nbsp;&nbsp;Run&nbsp;&nbsp;&nbsp;</a>
+				</div>
+		</div>
+		
+		<div data-role="collapsible" data-collapsed="true"  data-mini="true" data-theme="a" data-content-theme="b">
+				<h3>Example - Modify Image</h3>
+				<div id="examp4" style="font-size:70%">
+					app.LoadPlugin( "MyPlugin" );<br>
+					<br>
+					function OnStart()<br>
+					{<br>
+					 &nbsp;&nbsp;lay = app.CreateLayout( "Linear", "VCenter,FillXY" );<br><br>
+					 &nbsp;&nbsp;img = app.CreateImage( "/Sys/Img/Hello.png", 0.6, -1 );<br>
+					 &nbsp;&nbsp;lay.AddChild( img ); <br><br>
+					 &nbsp;&nbsp;btn = app.CreateButton( "Write On Image" );<br>				
+					 &nbsp;&nbsp;btn.SetOnTouch( CallPlugin );<br>
+					 &nbsp;&nbsp;lay.AddChild( btn );<br><br>
+					 <b id="snip4"  style="font-size:100%">
+					 &nbsp;&nbsp;plg = app.CreateMyPlugin();<br>
+					 </b><br>
+					 &nbsp;&nbsp;app.AddLayout( lay );<br>
+					}<br>
+					<br>
+					function CallPlugin()<br>
+					{<br>
+					&nbsp;&nbsp; plg.ModifyMyImage( img, "Hello" );<br>
+					}<br>
+				</div>
+				<div name="divCopy" align="right">
+				<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="copy(snip4)">&nbsp;&nbsp;Copy&nbsp;&nbsp;</a>
+				<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="copy(examp4)">Copy All</a>
+				<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="demo(examp4)">&nbsp;&nbsp;&nbsp;Run&nbsp;&nbsp;&nbsp;</a>
+				</div>
+		</div>
+		
+		<div data-role="collapsible" data-collapsed="true"  data-mini="true" data-theme="a" data-content-theme="b">
+				<h3>Example - Custom Control</h3>
+				<div id="examp5" style="font-size:70%">
+					app.LoadPlugin( "MyPlugin" );<br>
+					<br>
+					function OnStart()<br>
+					{<br>
+					 &nbsp;&nbsp;lay = app.CreateLayout( "Linear", "VCenter,FillXY" );<br><br>
+					 <b id="snip5"  style="font-size:100%">
+					 &nbsp;&nbsp;plg = app.CreateMyPlugin();<br>
+					 &nbsp;&nbsp;btn = plg.CreateMyButton( "Hello", 0.4, 0.2 );<br>
+					 &nbsp;&nbsp;lay.AddChild( btn );<br>
+					 </b><br>
+					 &nbsp;&nbsp;app.AddLayout( lay );<br>
+					}<br>
+					<br>
+
+				</div>
+				<div name="divCopy" align="right">
+				<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="copy(snip5)">&nbsp;&nbsp;Copy&nbsp;&nbsp;</a>
+				<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="copy(examp5)">Copy All</a>
+				<a href="#" data-role="button" data-mini="true" data-inline="true" onclick="demo(examp5)">&nbsp;&nbsp;&nbsp;Run&nbsp;&nbsp;&nbsp;</a>
+				</div>
+		</div>
+		
+	</div><!-- /content -->
+	
+</div><!-- /page -->
+
+</body>
+</html>
