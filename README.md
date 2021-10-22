@@ -7,9 +7,9 @@ the AndroidStudio terminal window (after building an APK from the Android Studio
 
 These are the main files of interest:
 
-java/../MyPlugin.java - The main code for the plugin functionality
-assets/MyPlugin.inc  - The JavaScript wrapper for the plugin
-assets/MyPlugin.html - The active documentation and samples for the plugin
+- java/../MyPlugin.java - The main code for the plugin functionality
+- assets/MyPlugin.inc  - The JavaScript wrapper for the plugin
+- assets/MyPlugin.html - The active documentation and samples for the plugin
 
 
 Please search/ask on the DroidScript forum for more information:- 
