@@ -5,7 +5,7 @@ app.CreateMyPlugin = function( options )
     return new MyPlugin( options );
 }
 
-//Plugin wrapper class.
+//Plugin wrapper object.
 function MyPlugin( options )
 {
 	var dw = app.GetDisplayWidth();
