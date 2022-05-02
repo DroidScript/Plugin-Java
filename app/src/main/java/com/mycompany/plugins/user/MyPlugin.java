@@ -70,7 +70,7 @@ public class MyPlugin
 		m_getObject = parent.getClass().getMethod( "GetObject", String.class );
 
 		//Get the plugin directory path (where your plugin will live when running in an app)
-		m_plugDir = m_ctx.getDir( "Plugins", 0 ).getAbsolutePath() + "/MyPlugin";
+		m_plugDir = m_ctx.getDir( "Plugins", 0 ).getAbsolutePath() + "/myplugin";
 
 		//Get the public storage folder for the current app.
 		m_filesDir = m_ctx.getExternalFilesDir(null).getPath();
